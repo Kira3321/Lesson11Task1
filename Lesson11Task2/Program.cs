@@ -1,4 +1,4 @@
-﻿namespace Lesson11Task1
+﻿namespace Lesson11Task2
 {
     internal class Program
     {
