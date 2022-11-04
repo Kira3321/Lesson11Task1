@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Lesson11Remastered\Lesson11Task1.csproj" />
+    <ProjectReference Include="..\Lesson11Task1\Lesson11Task1.csproj" />
   </ItemGroup>
 
 </Project>
