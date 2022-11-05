@@ -1,8 +1,11 @@
-﻿namespace Lesson11Task1
+﻿using System.Reflection;
+
+namespace Lesson11Task1
 {
-    internal interface IBankEmployeeAcsesses
+    public interface IBankEmployeeAcsesses
     {
-        bool acsessOnViewDataClient { get; set; }
-        bool acsessOnChangeDataClient { get; set; }
+        public void GetInformation(Object obj);
+
+        public void ChangeInformation(Object obj);
     }
 }

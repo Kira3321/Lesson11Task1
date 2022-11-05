@@ -12,7 +12,7 @@ namespace Lesson11Task1
         public string LastName { get; set; }
         public string PhoneNumber { get; set; }
         public string Passport { get; set; }
-
+        
         static BankAccount()
         {
             IdCount = new Random().NextInt64(5000000000, 5999999999);
@@ -38,11 +38,5 @@ namespace Lesson11Task1
                 }
             }
         }
-
-        public override string ToString()
-        {
-            return $"{AccountId}, {FirstName}, {LastName}, {AccountNumber}, {PhoneNumber}, {Passport}";
-        }
-
     }
 }
