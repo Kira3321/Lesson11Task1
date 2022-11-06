@@ -14,9 +14,9 @@ namespace Lesson11Task1
 
             var employee = new EmployeeOperator();
 
-            foreach (var item in accounts) employee.GetInformation(item);
-
             employee.GetInformation(accounts);
+
+            employee.ChangeInformation(accounts[1]);
 
         }
 

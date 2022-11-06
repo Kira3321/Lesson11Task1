@@ -15,6 +15,7 @@ namespace Lesson11Task1
             FieldNotToSee = new List<string>();
             FielToChange = new List<string>();
             FieldNotToSee.Add("Passport");
+            FielToChange.Add("PhoneNumber");
         }
 
         public EmployeeOperator()
@@ -49,7 +50,35 @@ namespace Lesson11Task1
 
         public void ChangeInformation(object obj)
         {
-            throw new NotImplementedException();
+            Type type = obj.GetType();
+            var props = type.GetProperties();
+            for (int i = 0; i < props.Length; i++)
+            {
+                var prop = props[i];
+                if  (FielToChange.Contains(prop.Name))
+                {
+                    Console.WriteLine($"Нужно изменить {prop.Name}?\nДа/Нет");
+                    string? userInput = Console.ReadLine();
+                    if (userInput == "Да")
+                    {
+                        while (true)
+                        {
+                            Console.WriteLine($"Введите новое значение в примерном виде {prop.GetValue(obj)}");
+                            userInput = Console.ReadLine();
+                            if (string.IsNullOrWhiteSpace(userInput))
+                            {
+                                Console.WriteLine("Пустое значение нельзя установить");
+                                continue;
+                            }    
+                            prop.SetValue(obj, userInput);
+                            Console.WriteLine($"Установленно новое значение: {prop.GetValue(obj)}") ;
+                            break;
+                        }
+                    }
+                    else Console.WriteLine("Пользователь отказался от ввода. Значение не будет изменено");
+                }
+                else Console.WriteLine($"Поле {prop.Name} недоступно для редактирования");
+            }
         }
     }
 
