@@ -12,12 +12,14 @@ namespace Lesson11Task1
             var accounts = new List<BankAccount>();
             for (int i = 0; i < 100; i++) accounts.Add(FakeDate.GenerateFakeBankAccount());
 
-            var employee = new EmployeeOperator();
+            var employeeOperator = new EmployeeOperator();
+            var employeeMangaer = new EmployeeManager();
 
-            employee.GetInformation(accounts);
+            employeeOperator.GetInformation(accounts[0]);
 
-            employee.ChangeInformation(accounts[1]);
+            employeeOperator.ChangeInformation(accounts[0]);
 
+            employeeMangaer.GetInformation(accounts[0]);
         }
 
     }

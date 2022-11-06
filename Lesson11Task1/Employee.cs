@@ -7,10 +7,10 @@ namespace Lesson11Task1
 
     public class EmployeeOperator : Employee, IBankEmployeeAcsesses
     {
-        protected static List<string> FieldNotToSee { get; set; }
-        protected static List<string> FielToChange { get; set; }
+        protected List<string> FieldNotToSee { get; set; }
+        protected List<string> FielToChange { get; set; }
 
-        static EmployeeOperator()
+        public EmployeeOperator()
         {
             FieldNotToSee = new List<string>();
             FielToChange = new List<string>();
@@ -18,10 +18,7 @@ namespace Lesson11Task1
             FielToChange.Add("PhoneNumber");
         }
 
-        public EmployeeOperator()
-        { }
-
-        public void GetInformation(object obj)
+        public void GetInformation(BankAccount obj)
         {
             Type t = obj.GetType();
             PropertyInfo[] props = t.GetProperties();
@@ -37,7 +34,7 @@ namespace Lesson11Task1
             foreach (var account in lst) this.GetInformation(account);
         }
 
-        protected static string AcsessToSee(PropertyInfo prop, string str)
+        protected string AcsessToSee(PropertyInfo prop, string str)
         {
             if (FieldNotToSee.Contains(prop.Name))
             {
@@ -48,7 +45,7 @@ namespace Lesson11Task1
             return str;
         }
 
-        public void ChangeInformation(object obj)
+        public void ChangeInformation(BankAccount obj)
         {
             Type type = obj.GetType();
             var props = type.GetProperties();
@@ -84,6 +81,17 @@ namespace Lesson11Task1
 
     public class EmployeeManager : EmployeeOperator
     {
-        
+        public EmployeeManager ()
+        {
+            FieldNotToSee = new List<string>();
+            FielToChange = new List<string>();
+            FielToChange.AddRange(new string[]
+            {
+                "FirstName",
+                "LastName",
+                "PhoneNumber",
+                "Passport"
+            });
+        }
     }
 }
